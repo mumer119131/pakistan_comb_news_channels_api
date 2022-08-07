@@ -1,3 +1,4 @@
+from re import L
 import requests
 from bs4 import BeautifulSoup
 baseUrls = {
@@ -26,7 +27,14 @@ baseUrls = {
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'}
 
 def scrape_news():
-    all_news = dict()
+    all_news = {
+        "about" : {
+            "developer" : "Muhammad Umer",
+            "info" : "This is a unoffical api for news of different news channel and made only for research purpose",
+            "github" : "https://github.com/mumer119131",
+            "api_source_code" : "https://github.com/mumer119131/pakistan_comb_news_channels_api"
+        }
+    }
     for web_name in baseUrls:
         response = requests.get(baseUrls[web_name]["url"], headers= headers)
         soup = BeautifulSoup(response.text, 'html.parser')
